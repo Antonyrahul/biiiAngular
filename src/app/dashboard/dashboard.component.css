@@ -1,0 +1,284 @@
+*{margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.menu-info,.mylinks,.menu-items{
+    
+     height: 100vh;
+    width: 100%;
+    background-color: #F2F6F9;
+
+    
+}
+.menu-items{
+    
+    background-color: white;
+    z-index: 1;
+    border-radius: 0px 40px 40px 0px;
+    position: relative;
+    float: left;
+    
+}
+.menu-info{
+   
+    border-right: 5px solid white;
+    
+}
+.mylinks{
+   
+}
+ .lineicon{
+  
+    margin-top: 87px;
+    width: 100%;
+    text-align: center;
+}
+
+.homeicon{
+    width: 100%;
+    display: inline-block;
+    margin-top: 100px;
+    text-align: center;
+} 
+
+.palleticon{
+    margin-top: 87px;
+    width: 100%;
+    text-align: center;
+}
+
+.settings{
+    margin-top: 200px;
+    width: 100%;
+    text-align: center;
+}
+.phonelayout{
+    
+
+
+    width: 17%;
+    height: 500px;
+    margin-left: 17%;
+    margin-top: 7%;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #FBFBFB;
+    border-radius: 54px;
+    opacity: 1;
+    position: absolute;
+
+   
+}
+.screenlayout{
+    width: 93%;
+    height: 480px;
+    margin-left: 3.5%;
+    margin-top: 3.5%;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: 1px solid #FBFBFB;
+    border-radius: 42px;
+    opacity: 1;
+    position: absolute;
+    z-index: 1;
+}
+.camera{
+        width: 50%;
+        height: 25px;
+        margin-left: 24.5%;
+        margin-top: 1%;
+        background: white;
+        position: absolute;
+        border-radius: 0px 0px 13px 13px;
+        opacity: 1;
+        z-index: 2;
+
+}
+.profilephoto{
+    width: 100px;
+    height: 100px;
+    margin-left: 30%;
+    
+    margin-top: 25%;
+    background: black;
+    position: absolute;
+    border-radius: 76px;
+    opacity: 1;
+    z-index: 2;
+}
+.usernamediv{
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    margin-top: 68%;
+    
+    text-align: center;
+    z-index: 2;
+    opacity: 1;
+    
+}
+.username{
+
+    font-size: 12px;
+    z-index: 2;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    
+}
+.mylinksbtn{
+    width: 100%;
+    position: absolute;
+    margin-top: 90%;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+.mylinksbtn button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 190px;
+    margin-top: 8px;
+    background-color: #1874EF;
+    border: 1px solid #1874EF;
+    border-radius: 16px;
+    opacity: 1; 
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    outline: none;
+}
+.socialgrid{
+    width: 100%;
+    position: absolute;
+    margin-top: 165%;
+    text-align: center;
+    z-index: 2;
+    color: black;
+    height: 20px;
+}
+.myprofileurl
+{
+    background-color: white;
+    width:80%;
+    z-index: 1;
+    margin-left: 10%;
+    
+    border-radius: 16px;
+    position: relative;
+   
+    height: 70px;
+    margin-top: 30px;
+
+}
+
+.heading{
+    font-family: 'Montserrat';
+    font-size: 10px;
+    color: #2D2D2D;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.url{
+    font-family: 'Montserrat';
+    margin-left: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    
+}
+.copylink{
+    display: block;
+    float: right;
+    height: 30px;
+    width: 110px;
+    margin-top: -25px;
+    background-color: #1874EF;
+    border: 1px solid #1874EF;
+    border-radius: 16px;
+    opacity: 1; 
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    margin-right: 50px;
+    outline: none;
+
+}
+.mylinksheading{
+    width: 50%;
+    margin-top: 50px;
+    position: relative;
+    margin-left: 11%;
+    font-family: 'Montserrat';
+    color: #2D2D2D;
+    font-size: 24px;
+    
+
+}
+.mylinkssvg{
+    margin-left: 10%;
+   
+}
+
+.urldetails
+{
+    background-color: white;
+    width:80%;
+    z-index: 1;
+    margin-left: 10%;
+    display: flex;
+    border-radius: 20px;
+    position: relative;
+   
+    height: 70px;
+    margin-top: 30px;
+
+}
+.dragdiv{
+    height: 70px;
+    background-color: #1874EF;
+    border-radius: 20px 0px 0px 20px;
+    display: flex;
+  align-items: center;
+    position: relative;
+    width:5%;
+    text-align: center;
+    vertical-align: middle;
+}
+.urltitle{
+    font-family: 'Montserrat';
+    margin-top: 25px;
+    margin-left: 20px;
+    display: block;
+    font-weight: bold;
+}
+.switch{
+    position: absolute;;
+    margin-top: 25px;
+    right: 20px;
+    display: flex;
+}
+
+.addlinksbuttongrid{
+    margin-left: 10%;
+    margin-top: 70px;
+    display: flex;
+}
+.addlinkbtn{
+    display: block;
+    float: right;
+    height: 40px;
+    width: 140px;
+    margin-top: -25px;
+    background-color: #1874EF;
+    border: 1px solid #1874EF;
+    border-radius: 16px;
+    opacity: 1; 
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    margin-right: 50px;
+    outline: none;
+}
