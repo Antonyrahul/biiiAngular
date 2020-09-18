@@ -1,5 +1,5 @@
 <body>
-    <div class="row">
+    <div class="row" id="maindiv" style="filter: blur(0px);">
         <div class="menu-info" style="width: 44%;">
             <div class="menu-items" style="width: 22%;">
                 <div class="homeicon">
@@ -133,9 +133,9 @@
                 <div class="usernamediv">
                     <h6 class="username">@elonmusk</h6>
                 </div>
-                <div class="mylinksbtn">
-                    <button>Dribble</button>
-                    <button>Behance</button>
+                <div class="mylinksbtn" style="overflow-y: scroll;">
+                    <button *ngFor="let details of activetitles">{{details}}</button>
+
                 </div>
                 <div class="socialgrid">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -161,7 +161,7 @@
 
 
         </div>
-        <div class="mylinks" style="width: 56%;">
+        <div class="mylinks" style="width: 56%;overflow-y:scroll;">
             <div class="myprofileurl">
                 <h6 class="heading">
                     Your url
@@ -203,18 +203,65 @@
                         {{details}}
                     </h6>
                 </div>
-                <div class="switch">
+                <div role="button" class="switch">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1"></label>
+                        <input (click)="turnofflink(details)" type="checkbox" class="custom-control-input"
+                            id="{{details}}" checked>
+                        <label class="custom-control-label" for="{{details}}"></label>
+                    </div>
+
+                </div>
+            </div>
+            <div *ngFor="let details of prod" class="urldetailsexpanded">
+                <div class="dragdivexpanded">
+                    <svg style="line-height:70px;display: block;
+                    margin: auto;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <g id="Layer_2" data-name="Layer 2" transform="translate(0.398)" opacity="0.4">
+                            <g id="move">
+                                <rect id="Rectangle_15" data-name="Rectangle 15" width="24" height="24"
+                                    transform="translate(23.602 24) rotate(180)" opacity="0" />
+                                <path id="Path_4" data-name="Path 4"
+                                    d="M21.71,11.31l-3-3a1,1,0,1,0-1.42,1.42L18.58,11H13V5.41l1.29,1.3a1,1,0,1,0,1.42-1.42l-3-3a1,1,0,0,0-1.41,0l-3,3A1,1,0,1,0,9.71,6.71L11,5.42V11H5.41l1.3-1.29A1,1,0,1,0,5.29,8.29l-3,3a1.014,1.014,0,0,0,0,1.42l3,3a1,1,0,1,0,1.42-1.42L5.42,13H11v5.59l-1.29-1.3a1,1,0,1,0-1.42,1.42l3,3a1,1,0,0,0,1.41,0l3-3a1,1,0,1,0-1.42-1.42L13,18.58V13h5.59l-1.3,1.29a1,1,0,0,0,1.42,1.42l3-3a.99.99,0,0,0,0-1.4Z"
+                                    transform="translate(0.42)" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div>
+                    <label class="urltitlelable">Title</label>
+                    <h6 class="urltitleexpanded">
+                        {{details}}
+                    </h6>
+                    <label class="urltitlelable">URL</label>
+                    <h6 class="urltitleexpanded">
+                        {{details}}
+                    </h6>
+                </div>
+                <div class="closearrow">
+                    <svg style="margin-top: 0.2px;margin-left:8px" xmlns="http://www.w3.org/2000/svg" width="12"
+                        height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                    <label class="published">Published</label>
+
+                </div>
+
+                <div class="switchexpanded">
+
+                    <div class="custom-control custom-switch">
+
+                        <input type="checkbox" class="custom-control-input" id="{{details}}">
+                        <label class="custom-control-label" for="{{details}}"></label>
                     </div>
 
                 </div>
             </div>
             <div class="addlinksbuttongrid">
-                <button class="addlinkbtn">Add new link <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
+                <button (click)="openmodal();" class="addlinkbtn">Add new link <svg xmlns="http://www.w3.org/2000/svg"
+                        width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="8" x2="12" y2="16"></line>
                         <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -227,6 +274,153 @@
                         <line x1="8" y1="12" x2="16" y2="12"></line>
                     </svg></button>
             </div>
+        </div>
+    </div>
+
+    <div id="myModal1" class="modal1">
+
+        <!-- Modal content -->
+        <div class="modal1-content">
+            <form [formGroup]="loginform" (submit)="processdata();">
+            <div class="row">
+                <div class="col-4" style="height: 80vh;">
+                    <!-- <form [formGroup]="loginform" (submit)="processdata();"> -->
+
+                        <label class="urloremaillabel" for="exampleInputEmail1">Add url or email</label>
+                        <input
+                            style=" background-color:  #F5F5F5 ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;"
+                            formControlName="url" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <label class="titlelablemodal" for="exampleInputEmail1">Title</label>
+                        <input
+                            style=" background-color:  #F5F5F5 ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;"
+                            formControlName="title" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Title of Link">
+
+                    <!-- </form> -->
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <h6 style="margin-left: 20px;">Choose Layout</h6>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"></a>
+                                <div class="card-body" style="justify-content: center;align-items: center;">
+                                    <img class="card-img" style="margin-top: 17px;" src="../../assets/text.png" alt="">
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 60px;">Text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"></a>
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../../assets/imagetextsubtext.png" alt="">
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 35px;">Image+Text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"><img class="card-img-top" src="../../assets/imagetextsubtext.png"
+                                        alt=""></a>
+                                <div class="card-body">
+
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 35px;">Image+text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"><img class="card-img" style="margin-top: 17px;"
+                                        src="../../assets/textsubtext.png" alt=""></a>
+                                <div class="card-body">
+
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 30px;">Text+Subtext</h6>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"></a>
+                                <div class="card-body" style="justify-content: center;align-items: center;">
+                                    <img class="card-img" style="margin-top: 17px;" src="../../assets/text.png" alt="">
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 60px;">Text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"></a>
+                                <div class="card-body">
+                                    <img class="card-img-top" src="../../assets/imagetextsubtext.png" alt="">
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 35px;">Image+Text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"><img class="card-img-top" src="../../assets/imagetextsubtext.png"
+                                        alt=""></a>
+                                <div class="card-body">
+
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 35px;">Image+text</h6>
+                        </div>
+                        <div class="col-3">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 100px;height: 100px;" class="card">
+                                <a href="#"><img class="card-img" style="margin-top: 17px;"
+                                        src="../../assets/textsubtext.png" alt=""></a>
+                                <div class="card-body">
+
+                                </div>
+
+                            </div>
+                            <h6 class="carddetails" style="margin-left: 30px;">Text+Subtext</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h6 style="margin-left: 20px;margin-top: 20px;">Preview</h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div style="margin-left: 20px;margin-top: 20px; width: 700px;height: 250px;" class="card">
+                                <a href="#"><img class="card-img" style="margin-top: 17px;" src="" alt=""></a>
+                                <div class="card-body">
+                                    <input
+                            style=" background-color: white ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;margin-top: 70px;width: 400px;margin-left: 150px;height:40px"
+                            formControlName="entertext" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Title Here">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-12">
+                    <Button style="width: 1250px; margin-left: 60px;background:#1874EF;height: 40px;margin-top: 40px;border: 1px solid #1874EF;outline: none;border-radius: 20px; color: #FFFFFF;
+                    font-family: 'Montserrat';
+                    font-size: 12px;">Create Link</Button>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 </body>
