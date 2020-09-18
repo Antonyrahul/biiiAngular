@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path:"dash",
     component:DashboardComponent
-  }
+  },
   {
     path:"",
     component:DashboardComponent
