@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   alltitiles;
   activetitles;
   activetitlesname;
+  dispname="";
   public title="";
   
   constructor(private _clipboardService: ClipboardService, private urlservice:UrlService) {
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
       console.log(data);
       this.prod=data.data;
       this.alltitiles=this.prod.biiiurls;
+      this.dispname=this.prod.firstname
       this.activetitles=this.alltitiles.filter((item)=>{
         return item.state==true
       })
