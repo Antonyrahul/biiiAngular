@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import {SharedprofileComponent} from './sharedprofile/sharedprofile.component'
 import {LoginComponent} from './login/login.component'
 import {RegisterComponent} from './register/register.component'
+import {LogoutComponent} from './logout/logout.component'
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:"register",
     component:RegisterComponent
+  },
+  {
+    path:"logout",
+    component:LogoutComponent
   },
   {
     path:":id",

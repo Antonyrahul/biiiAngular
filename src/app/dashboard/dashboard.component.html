@@ -134,7 +134,7 @@
                     <h6 class="username">@elonmusk</h6>
                 </div>
                 <div class="mylinksbtn" style="overflow-y: scroll;">
-                    <button *ngFor="let details of activetitles">{{details}}</button>
+                    <button *ngFor="let details of activetitles">{{details.title}}</button>
 
                 </div>
                 <div class="socialgrid">
@@ -167,9 +167,9 @@
                     Your url
                 </h6>
                 <h6 class="url">
-                    linktr.co/elonmusk
+                    biii.netlify.app/{{this.prod.firstname}}
                 </h6>
-                <button (click)="copytoclipboard('hello')" class="copylink">
+                <button (click)="copytoclipboard()" class="copylink">
                     Copy Link
                 </button>
             </div>
@@ -183,7 +183,7 @@
                 </svg>
                 My links
             </div>
-            <div *ngFor="let details of prod" class="urldetails">
+            <div *ngFor="let details of alltitiles" class="urldetails">
                 <div class="dragdiv">
                     <svg style="line-height:70px;display: block;
                     margin: auto;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -200,19 +200,19 @@
                 </div>
                 <div>
                     <h6 class="urltitle">
-                        {{details}}
+                        {{details.title}}
                     </h6>
                 </div>
                 <div role="button" class="switch">
                     <div class="custom-control custom-switch">
-                        <input (click)="turnofflink(details)" type="checkbox" class="custom-control-input"
-                            id="{{details}}" checked>
-                        <label class="custom-control-label" for="{{details}}"></label>
+                        <input (click)="turnofflink(details.title,details.state)" type="checkbox" class="custom-control-input"
+                            id="{{details.title}}" [checked] = details.state >
+                        <label class="custom-control-label" for="{{details.title}}"></label>
                     </div>
 
                 </div>
             </div>
-            <div *ngFor="let details of prod" class="urldetailsexpanded">
+            <!-- <div *ngFor="let details of prod" class="urldetailsexpanded">
                 <div class="dragdivexpanded">
                     <svg style="line-height:70px;display: block;
                     margin: auto;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -230,11 +230,11 @@
                 <div>
                     <label class="urltitlelable">Title</label>
                     <h6 class="urltitleexpanded">
-                        {{details}}
+                        {{details.title}}
                     </h6>
                     <label class="urltitlelable">URL</label>
                     <h6 class="urltitleexpanded">
-                        {{details}}
+                        {{details.url}}
                     </h6>
                 </div>
                 <div class="closearrow">
@@ -252,12 +252,12 @@
 
                     <div class="custom-control custom-switch">
 
-                        <input type="checkbox" class="custom-control-input" id="{{details}}">
-                        <label class="custom-control-label" for="{{details}}"></label>
+                        <input type="checkbox" class="custom-control-input" id="{{details.title}}">
+                        <label class="custom-control-label" for="{{details.title}}"></label>
                     </div>
 
                 </div>
-            </div>
+            </div> -->
             <div class="addlinksbuttongrid">
                 <button (click)="openmodal();" class="addlinkbtn">Add new link <svg xmlns="http://www.w3.org/2000/svg"
                         width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -286,16 +286,17 @@
                 <div class="col-4" style="height: 80vh;">
                     <!-- <form [formGroup]="loginform" (submit)="processdata();"> -->
 
-                        <label class="urloremaillabel" for="exampleInputEmail1">Add url or email</label>
+                        <label class="urloremaillabel" for="exampleInputEmail1" >Add url or email</label>
                         <input
                             style=" background-color:  #F5F5F5 ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;"
                             formControlName="url" class="form-control" aria-describedby="emailHelp"
                             placeholder="Enter email">
                         <label class="titlelablemodal" for="exampleInputEmail1">Title</label>
-                        <input
+                        <input  [(ngModel)]="title"
                             style=" background-color:  #F5F5F5 ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;"
                             formControlName="title" class="form-control" aria-describedby="emailHelp"
                             placeholder="Title of Link">
+                            
 
                     <!-- </form> -->
                 </div>
@@ -402,7 +403,7 @@
                             <div style="margin-left: 20px;margin-top: 20px; width: 700px;height: 250px;" class="card">
                                 <a href="#"><img class="card-img" style="margin-top: 17px;" src="" alt=""></a>
                                 <div class="card-body">
-                                    <input
+                                    <input [value]=title
                             style=" background-color: white ;font-family: 'Montserrat';font-size: 12px;border-color: white; border-width: 3px;margin-top: 70px;width: 400px;margin-left: 150px;height:40px"
                             formControlName="entertext" class="form-control" aria-describedby="emailHelp"
                             placeholder="Title Here">
@@ -415,7 +416,7 @@
         
             <div class="row">
                 <div class="col-12">
-                    <Button style="width: 1250px; margin-left: 60px;background:#1874EF;height: 40px;margin-top: 40px;border: 1px solid #1874EF;outline: none;border-radius: 20px; color: #FFFFFF;
+                    <Button type="submit" style="width: 1250px; margin-left: 60px;background:#1874EF;height: 40px;margin-top: 40px;border: 1px solid #1874EF;outline: none;border-radius: 20px; color: #FFFFFF;
                     font-family: 'Montserrat';
                     font-size: 12px;">Create Link</Button>
                 </div>

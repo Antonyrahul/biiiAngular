@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from'@angular/forms';
+import {UrlService} from '../url.service'
 
 import { ClipboardService } from 'ngx-clipboard'
+
 
 @Component({
   selector: 'app-dashboard',
@@ -12,16 +14,28 @@ export class DashboardComponent implements OnInit {
   prod;
   loginform;
   alltitiles;
-  activetitles
-  constructor(private _clipboardService: ClipboardService) {
-    this.prod = ["Dribble", "Portfolio", "Behance"]
-    this.alltitiles=this.prod;
-    this.activetitles=this.alltitiles;
+  activetitles;
+  activetitlesname;
+  public title="";
+  
+  constructor(private _clipboardService: ClipboardService, private urlservice:UrlService) {
+    console.log("in")
+    this.urlservice.geturls({email:localStorage.getItem("email")}).subscribe((data)=>{
+      console.log(data);
+      this.prod=data.data;
+      this.alltitiles=this.prod.biiiurls;
+      this.activetitles=this.alltitiles.filter((item)=>{
+        return item.state==true
+      })
+    })
+   // this.prod = [{title:"Facebook",url:"https://www.facebook.com"},{title:"Youtube",url:"https://www.youtube.com"},{title:"Instagram",url:"https://www.instagram.com"}]
+    // this.alltitiles=this.prod;
+    // this.activetitles=this.alltitiles;
 
     this.loginform = new FormGroup({
       url:new FormControl('',[Validators.required]),
       title:new FormControl('',[Validators.required]),
-      entertext:new FormControl('',[Validators.required]),
+      entertext:new FormControl(''),
 
      
       
@@ -52,25 +66,55 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  copytoclipboard(copytext) {
+  copytoclipboard() {
     console.log("clip")
-    var result = this._clipboardService.copyFromContent(copytext)
+    var result = this._clipboardService.copyFromContent("biii.netlify.app/"+this.prod.firstname)
     console.log(result)
   }
-  turnofflink(titilename){
+  turnofflink(titilename,state){
+  
 
-    console.log(titilename)
-    if(this.activetitles.includes(titilename))
-    {
-    this.activetitles=this.alltitiles.filter((titles)=>{
-      console.log(titles)
-             return titles!=titilename;
-    })
-  }
-  else{
-    this.activetitles.push(titilename)
-  }
-    console.log(this.activetitles)
+      
+      console.log(titilename)
+      console.log(state)
+  
+      this.urlservice.changelinkstate({email:localStorage.getItem("email"),state:state,title:titilename}).subscribe((data)=>{
+        console.log(data);
+       
+  
+      })
+      this.urlservice.geturls({email:localStorage.getItem("email")}).subscribe((data)=>{
+        console.log(data);
+        this.prod=data.data.biiiurls;
+        this.alltitiles=this.prod;
+        this.activetitles=this.alltitiles.filter((item)=>{
+          return item.state==true
+        })
+      })
+
+  
+    //   this.activetitlesname= this.activetitles.map((ele)=>{
+    //   return ele.title;
+    //   }
+     
+    //   )
+    //   console.log(this.activetitlesname)
+    //   if(this.activetitlesname.includes(titilename))
+    //   {
+    //   this.activetitles=this.alltitiles.filter((titles)=>{
+    //     console.log(titles)
+    //            return titles.title!=titilename;
+    //   })
+    //   console.log(this.activetitles)
+    // }
+  
+    // else{
+    //   this.activetitles.push(titilename)
+    // }
+      console.log(this.activetitles)
+    
+
+
   }
 
   openmodal(){
@@ -89,5 +133,33 @@ export class DashboardComponent implements OnInit {
 }
   processdata(){
     console.log("process")
+    var modal = document.getElementById("myModal1");
+    var maindiv = document.getElementById("maindiv")
+    if(this.loginform.valid)
+    {
+      this.loginform.value.email=localStorage.getItem("email");
+      this.loginform.value.state=true;
+      console.log("pocha")
+      console.log(this.loginform.value)
+      this.urlservice.storeurl(this.loginform.value).subscribe((data)=>{
+        console.log(data)
+      
+        modal.style.display = "none";
+        maindiv.style.filter="blur(0px)";
+        this.urlservice.geturls({email:localStorage.getItem("email")}).subscribe((data)=>{
+          console.log(data);
+          this.prod=data.data;
+          this.alltitiles=this.prod.biiiurls;
+          this.activetitles=this.alltitiles.filter((item)=>{
+            return item.state==true
+          })
+        })
+        
+      })
+
+    }
+    else{
+      console.log("not valid")
+    }
 }
 }

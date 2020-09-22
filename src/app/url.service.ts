@@ -18,5 +18,17 @@ export class UrlService {
     console.log(data)
     return this.http.post("https://urlshortnerappantony.herokuapp.com/loginuser",data)
   }
+  storeurl(data):Observable<any>{
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/storeurl",data)
+  }
+  geturls(data):Observable<any>
+  {
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/geturlsbiii",data)
+  }
+  changelinkstate(data):Observable<any>{
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/changelinkstate",data)
+  }
 
 }
+//https://urlshortnerappantony.herokuapp.com
+//https://urlshortnerappantony.herokuapp.com
