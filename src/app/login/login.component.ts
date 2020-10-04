@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginform;
+  
   constructor(private urlservice:UrlService,private router:Router) { 
+    this.urlservice.setupSocketConnection();
     this.loginform = new FormGroup({
       email:new FormControl('',[Validators.required,Validators.email]),
       password:new FormControl('',[Validators.required]),

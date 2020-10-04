@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as io from 'socket.io-client';
 
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UrlService {
-
+socket;
   constructor(private http:HttpClient) { }
   registerUser(data):Observable<any>{
     console.log(data)
@@ -28,7 +29,13 @@ export class UrlService {
   changelinkstate(data):Observable<any>{
     return this.http.post("https://urlshortnerappantony.herokuapp.com/changelinkstate",data)
   }
+  setupSocketConnection() {
+    this.socket = io("https://urlshortnerappantony.herokuapp.com");
+    this.socket.on("hello pepes",(msg)=>{
+      console.log(msg)
+    })
+  }
 
 }
-//https://urlshortnerappantony.herokuapp.com
+//http://localhost:4123
 //https://urlshortnerappantony.herokuapp.com

@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
       console.log(titilename)
       console.log(state)
   
-      this.urlservice.changelinkstate({email:localStorage.getItem("email"),state:state,title:titilename}).subscribe((data)=>{
+      this.urlservice.changelinkstate({email:localStorage.getItem("email"),state:state,title:titilename,name:localStorage.getItem("name")}).subscribe((data)=>{
         console.log(data);
        
   
