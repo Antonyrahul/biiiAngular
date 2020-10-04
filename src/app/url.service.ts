@@ -29,12 +29,12 @@ socket;
   changelinkstate(data):Observable<any>{
     return this.http.post("https://urlshortnerappantony.herokuapp.com/changelinkstate",data)
   }
-  // setupSocketConnection() {
-  //   this.socket = io("https://urlshortnerappantony.herokuapp.com");
-  //   this.socket.on("hello pepes",(msg)=>{
-  //     console.log(msg)
-  //   })
-  // }
+  setupSocketConnection() {
+    this.socket = io("https://urlshortnerappantony.herokuapp.com");
+    this.socket.on("hello pepes",(msg)=>{
+      console.log(msg)
+    })
+  }
 
 }
 //http://localhost:4123

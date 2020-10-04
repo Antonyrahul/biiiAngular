@@ -29,11 +29,11 @@ export class SharedprofileComponent implements OnInit {
         return item.state==true
       })
     })
-    // this.socket = io("https://urlshortnerappantony.herokuapp.com");
-    // this.socket.on(this.username,(msg)=>{
-    //   console.log(msg)
-    //   this.geturls();
-    // })
+    this.socket = io("https://urlshortnerappantony.herokuapp.com");
+    this.socket.on(this.username,(msg)=>{
+      console.log(msg)
+      this.geturls();
+    })
    }
 
   ngOnInit(): void {
