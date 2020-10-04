@@ -29,7 +29,7 @@ export class SharedprofileComponent implements OnInit {
         return item.state==true
       })
     })
-    this.socket = io("http://localhost:3000");
+    this.socket = io("https://urlshortnerappantony.herokuapp.com");
     this.socket.on(this.username,(msg)=>{
       console.log(msg)
       this.geturls();
