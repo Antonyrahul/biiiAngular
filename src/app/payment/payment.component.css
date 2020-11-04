@@ -1,0 +1,55 @@
+
+/* *{margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+} */
+*{
+    font-family: 'Montserrat';
+}
+.paymentbody{
+    background-color: #f2f2f2;
+   
+}
+.paymenttxt{
+    
+    text-align: center;
+}
+.paymentmainmenu
+{
+    border-radius: 20px 20px 0 0;
+    background-color: white;
+    margin-top: 30px;
+    text-align: center;
+    
+}
+.paymentmodebtn{
+    border-radius: 8px;
+    background-color: white;
+    border-color: #2D2D2D;
+    font-size: 16px;
+    border: 1px solid rgba(45, 45, 45, .1);
+    height: 35px;
+   align-items: center;
+    
+}
+.carddetails{
+    width: 95%;
+    border-radius: 5px;
+    border-color: #2D2D2D;
+}
+.paybutton{
+    border-radius: 8px;
+    background-color: #86B549;
+    width: 90%;
+    color: white;
+    height: 52px;
+    border: 1px solid rgba(45, 45, 45, .1);
+}
+
+.item-no-total
+{
+    height: 40px;
+    display: flex;
+justify-content: center;
+vertical-align: middle;
+}

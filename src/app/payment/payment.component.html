@@ -1,0 +1,139 @@
+<!-- <button id="rzp-button1" (click)="pay();">Pay</button>
+
+<button id="checkout-button" (click)="stripepay();">Checkout</button>
+
+<button id="hmmm" (click)="rpcus();">rpcus</button> -->
+
+    
+<div class="paymentbody">
+
+<div class="row">
+    <div class="col-12">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </div>
+</div>
+<div class="row">
+
+
+<div class="col-12 paymenttxt">
+    <h3>Payment</h3>
+</div>
+</div>
+<div class="col-12">
+    <div class="card h-30 item-no-total">
+        
+          <span style="font-size: 16px;vertical-align: middle; margin-left: 5px;">Total <span style="font-size: 14px;color: #2D2D2D;opacity: 40%;">(2 items)</span><span style="margin-right: 10px;float: right;"><span style="margin-right: 10px;opacity: 80%;">Amount</span><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span></span>
+          
+       
+      </div>
+</div>
+<div class="col-12">
+
+</div>
+<div class="paymentmainmenu">
+
+    <div class="row">
+        <div class="col-12" style="align-items: center;text-align: center;">
+            <span style="font-size: 14px; margin-top: 25px;display: inline-block;vertical-align: middle;">Pay Using</span>
+        </div>
+    </div>
+   
+        
+
+        <div class="row" style="margin-top:25px">
+            <div class="col-4">
+                <button class="paymentmodebtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1874EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> Card</button>
+            </div>
+            <div class="col-4">
+                <button class="paymentmodebtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1874EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> UPI</button>
+            </div>
+            <div class="col-4">
+                <button class="paymentmodebtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1874EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> Pay</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px">
+            <div class="col-12">
+                <div class="form-group">
+                    <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">card number</label>
+                    <input style="width: 95%; margin-left: 10px;background: url(../../assets/credit-card-16.svg) no-repeat right 10px center;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    
+                  </div>
+            </div>
+        </div>
+        <!-- <div class="row" style="margin-top:20px">
+            <div class="col-12">
+                <span style="float: left;margin-left: 8px;">Card number</span>
+            </div>
+                
+                
+            <div class="col-12" >
+                <input class="carddetails" type="text">
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-7">
+                <div class="form-group">
+                    <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">Expiry</label>
+                    <input style="width: 95%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    
+                  </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group">
+                    <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">cvv</label>
+                    <input style="width: 95%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    
+                  </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-8">
+                <input class="carddetails" type="text">
+            </div>
+            <div class="col-4">
+                <input class="carddetails" type="text">
+            </div>
+        </div> -->
+<!-- 
+        <div class="row" style="margin-top:20px">
+            <div class="col-12">
+                <span>Card Holder Name</span>
+            </div>
+                
+                
+            <div class="col-12" >
+                <input class="carddetails" type="text">
+            </div>
+        </div> -->
+        <div class="row" style="margin-top:20px">
+            <div class="col-12">
+                <div class="form-group">
+                    <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">card holder name</label>
+                    <input style="width: 95%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <span style="font-size: 14px;float: left; margin-left: 10px;">Save for future payments</span>
+            </div>
+            <div class="col-4">
+                
+                <div class="custom-control custom-switch">
+                     <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    
+                  </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-12">
+                <button class="paybutton">
+                    Pay Amount
+                </button>
+            </div>
+        </div>
+    
+</div>
+</div>

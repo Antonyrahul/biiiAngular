@@ -5,6 +5,7 @@ import {SharedprofileComponent} from './sharedprofile/sharedprofile.component'
 import {LoginComponent} from './login/login.component'
 import {RegisterComponent} from './register/register.component'
 import {LogoutComponent} from './logout/logout.component'
+import {PaymentComponent} from './payment/payment.component'
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
     path:"dash",
     component:DashboardComponent
   }, 
+  {
+    path:"pay",
+    component:PaymentComponent
+  },
   {
     path:"",
     component:DashboardComponent

@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LogoutComponent } from './logout/logout.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LogoutComponent } from './logout/logout.component';
     SharedprofileComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
