@@ -63,16 +63,16 @@
                    Pay</button>
             </div>
         </div>
-      
-        <div *ngIf="this.primarypaymentmode == 'card'" class="cardpayment">
-
+        <form id="card_payment"  [formGroup]= "credit_debit_form" (submit)="dummyfunc();">
+        <div  class="cardpayment">
+<!-- *ngIf="this.primarypaymentmode == 'card'" -->
         
 
         <div class="row" style="margin-top:20px">
             <div class="col-12">
                 <div class="form-group">
                     <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">card number</label>
-                    <input style="width: 95%; margin-left: 10px;background: url(../../assets/credit-card-16.svg) no-repeat right 10px center;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <input id ="card_number" style="width: 95%; margin-left: 10px;background: url(../../assets/credit-card-16.svg) no-repeat right 10px center;"  class="form-control"  aria-describedby="emailHelp" formControlName="cardnumber" >
                     
                   </div>
             </div>
@@ -91,14 +91,14 @@
             <div class="col-7">
                 <div class="form-group" style="text-align: left;">
                     <label style="margin-left: 10px;" for="exampleInputEmail1">Expiry</label>
-                    <input style="width: 90%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <input id ="card_expiry" style="width: 90%; margin-left: 10px;"  class="form-control"  aria-describedby="emailHelp" formControlName="expiry" >
                     
                   </div>
             </div>
             <div class="col-5">
                 <div class="form-group" style="text-align: left;">
                     <label style="margin-left: 10px;" for="exampleInputEmail1">cvv</label>
-                    <input style="width: 90%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <input id ="card_cvv" style="width: 90%; margin-left: 10px;"  class="form-control" type="password"  aria-describedby="emailHelp" formControlName="cvv" maxlength="4" >
                     
                   </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label style="float: left;margin-left: 10px;" for="exampleInputEmail1">card holder name</label>
-                    <input style="width: 95%; margin-left: 10px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <input style="width: 95%; margin-left: 10px;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="nameoncard" >
                     
                   </div>
             </div>
@@ -142,9 +142,12 @@
                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                     
                   </div>
+
             </div>
         </div>
+        
     </div>
+
        <div *ngIf="this.primarypaymentmode == 'upimode'" class="upipaymentmodes">
            <div class="row">
                <div class="col-12">
@@ -202,11 +205,12 @@
         </div>
         <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
             <div class="col-12">
-                <button class="paybutton">
+                <button type="submit"  class="paybutton">
                     Pay Amount
                 </button>
             </div>
         </div>
+    </form>
     
 </div>
 </div>

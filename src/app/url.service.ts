@@ -36,13 +36,13 @@ socket;
     })
   }
   createorder(data):Observable<any>{
-    return this.http.post("http://localhost:4123/payment",data)
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/payment",data)
   }
   securepayment(data):Observable<any>{
-    return this.http.post("http://localhost:4123/secure",data)
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/secure",data)
   }
   stripepay(data):Observable<any>{
-    return this.http.post("http://localhost:4123/create-session",data)
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/create-session",data)
   }
 
 }
