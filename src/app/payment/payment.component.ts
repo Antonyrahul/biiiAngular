@@ -220,6 +220,8 @@ credit_debit_form;
     })
 
     var data = {
+      callback_url: 'https://biii.netlify.app/pay',
+      //redirect: true,
       amount: 50000, // in currency subunits. Here 1000 = 1000 paise, which equals to ₹10
       currency: "INR",// Default is INR. We support more than 90 currencies.
       email: 'gaurav.kumar@example.com',
