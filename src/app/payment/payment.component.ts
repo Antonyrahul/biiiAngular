@@ -15,8 +15,10 @@ declare var Stripe: any;
 export class PaymentComponent implements OnInit {
 order_id = ""
 mainres;
-stripe
+stripe;
+primarypaymentmode="card";
   constructor(private urlservice:UrlService) { 
+   
   
   
   // document.getElementById('rzp-button1').onclick = function(e){
@@ -36,6 +38,7 @@ stripe
 
 
   ngOnInit(): void {
+    
   }
   async pay()
 
@@ -173,5 +176,8 @@ stripe
       razorpay.on('payment.error', function(resp){alert(resp.error.description)}); // will pass error object to error handler
     
     
+  }
+  setpaymentmode(paymentmode){
+    this.primarypaymentmode=paymentmode
   }
 }

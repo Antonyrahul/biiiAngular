@@ -31,6 +31,7 @@
     height: 35px;
     width: 70px;
    align-items: center;
+   outline-color: #1874EF;
     
 }
 .carddetails{
@@ -45,6 +46,34 @@
     color: white;
     height: 52px;
     border: 1px solid rgba(45, 45, 45, .1);
+}
+ul.line-separated
+    {
+        background-color: blue;
+        padding: 0;
+        margin-left: 1em;
+        
+    }
+    ul.line-separated li
+    {
+        background-color: white;
+        margin: 1px 0 0 0;
+        padding: 0;
+        text-align: left;
+        list-style-type: none;
+        margin-top: 10px;
+    }
+
+.upipaymentmodes{
+    margin-top: 50px;
+}
+.about-border {
+    display: block;
+    width: 95%;
+    height: 3px;
+    background: #2D2D2D;
+    opacity: 10%;
+    margin: 30px auto;
 }
 
 .item-no-total
