@@ -220,8 +220,6 @@ credit_debit_form;
     })
 
     var data = {
-      callback_url: 'https://biii.netlify.app/pay',
-      //redirect: true,
       amount: 50000, // in currency subunits. Here 1000 = 1000 paise, which equals to ₹10
       currency: "INR",// Default is INR. We support more than 90 currencies.
       email: 'gaurav.kumar@example.com',
@@ -231,18 +229,14 @@ credit_debit_form;
       },
       order_id: this.order_id,// Replace with Order ID generated in Step 4
       method: 'card',
-    
-     // method specific fields
-       'card[number]': cardnum, 
-       'card[name]': this.credit_debit_form.value.nameoncard,
-       'card[expiry_month]': expmonth,
-       'card[expiry_year]' :expyear,
-       'card[cvv]': this.credit_debit_form.value.cvv
-       
-
-       
-
-    };
+      'card[number]': cardnum, 
+      'card[name]': this.credit_debit_form.value.nameoncard,
+      'card[expiry_month]': expmonth,
+      'card[expiry_year]' :expyear,
+      'card[cvv]': this.credit_debit_form.value.cvv,
+      "callback_url": 'https://urlshortnerappantony.herokuapp.com/paymentsucess',
+      
+      };
     
   
       // has to be placed within user initiated context, such as click, in order for popup to open.
