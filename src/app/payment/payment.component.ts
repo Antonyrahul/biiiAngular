@@ -204,9 +204,9 @@ credit_debit_form;
   dummyfunc()
   {
     console.log(this.credit_debit_form.value)
-    var cardnum = this.credit_debit_form.value.cardnumber.replace(/\s+/g, '');
+    var cardnum = this.credit_debit_form.value.cardnumber;
     var expslit = this.credit_debit_form.value.expiry.split('/')
-    
+    //.replace(/\s+/g, '')
     var expmonth = expslit[0].trim()
     var expyear =  expslit[1].trim()
     console.log(cardnum,expslit,expmonth,expyear)
