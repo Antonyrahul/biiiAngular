@@ -235,10 +235,7 @@ credit_debit_form;
       'card[expiry_year]' :expyear,
       'card[cvv]': this.credit_debit_form.value.cvv,
       "callback_url": 'https://urlshortnerappantony.herokuapp.com/paymentsucess'
-      
-      
-      
-      };
+     };
     //"callback_url": 'http://localhost:4123/paymentsucess',
   
       // has to be placed within user initiated context, such as click, in order for popup to open.
@@ -250,12 +247,12 @@ credit_debit_form;
         console.log(resp.razorpay_signature)}); // will pass payment ID, order ID, and Razorpay signature to success handler.
     
       razorpay.on('payment.error', function(resp){console.log(resp.error.description)
-        console.log(resp.error.code);
-        console.log(resp.error.description);
-        console.log(resp.error.source);
-        console.log(resp.error.step);
-        console.log(resp.error.reason);
-        console.log(resp.error.metadata);
+        alert(resp.error.code);
+        alert(resp.error.description);
+        alert(resp.error.source);
+        alert(resp.error.step);
+        alert(resp.error.reason);
+        alert(resp.error.metadata);
       }); // will pass error object to error handler
   }
 }
