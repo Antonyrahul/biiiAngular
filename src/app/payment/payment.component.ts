@@ -234,6 +234,7 @@ credit_debit_form;
       'card[expiry_month]': expmonth,
       'card[expiry_year]' :expyear,
       'card[cvv]': this.credit_debit_form.value.cvv,
+      "callback_url": 'https://urlshortnerappantony.herokuapp.com/paymentsucess'
       
       
       
