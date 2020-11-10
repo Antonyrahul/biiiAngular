@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from'@angular/forms';
 
@@ -18,6 +19,8 @@ mainres;
 stripe;
 primarypaymentmode="card";
 credit_debit_form;
+stripeclientid;
+stripecarrdnumber;
   constructor(private urlservice:UrlService) { 
 
     this.credit_debit_form = new FormGroup({
@@ -44,6 +47,8 @@ credit_debit_form;
 
 
 })
+
+this.stripepaymentint();
   }
 
 
@@ -214,6 +219,7 @@ credit_debit_form;
       key: 'rzp_test_Xg0FLdhPVPs7oM',
         // logo, displayed in the popup
       image: 'https://i.imgur.com/n5tjHFD.png',
+      redirect:true
     });
     razorpay.once('ready', function(response) {
       console.log(response.methods);
@@ -234,7 +240,9 @@ credit_debit_form;
       'card[expiry_month]': expmonth,
       'card[expiry_year]' :expyear,
       'card[cvv]': this.credit_debit_form.value.cvv,
-      "callback_url": 'https://urlshortnerappantony.herokuapp.com/paymentsucess'
+      "callback_url": 'http://localhost:4123/paymentsucess',
+     
+      
      };
     //"callback_url": 'http://localhost:4123/paymentsucess',
   
@@ -255,4 +263,126 @@ credit_debit_form;
         alert(resp.error.metadata);
       }); // will pass error object to error handler
   }
+  paywithcashfree(){
+    console.log(this.credit_debit_form.value)
+    this.urlservice.cashfreepay({total:500}).subscribe((data)=>{
+      console.log(data)
+      setTimeout(() => {
+        this.urlservice.confirmcashfreepayment({postdata:data.postdata},data.url).subscribe((data)=>{
+          console.log(data)
+        })
+      }, 3000);
+    
+  })
+
+  }
+  stripepaymentint()
+  {
+    console.log("stripe payment in init")
+    
+    var elements = this.stripe.elements();
+    
+    
+    this.urlservice.stripePaymentIntent({total:500}).subscribe((data)=>{
+      console.log(data)
+      this.stripeclientid= data.clientSecret;
+    
+    
+     })
+    // Stripe injects an iframe into the DOM
+    setTimeout(() => {
+      this.stripecarrdnumber = elements.create('cardNumber',
+     
+      {
+        placeholder:'',
+        style: {
+        base: {
+        
+          fontWeight: 300,
+          fontFamily: 'Montserrat',
+          fontSize: '16px',
+          
+          lineHeight:"35px",
+
+          '::placeholder': {
+            color: '#87BBFD',
+            
+          },
+        },
+        invalid: {
+          iconColor: '#FFC7EE',
+          color: '#FFC7EE',
+        },
+      },
+    });
+      this.stripecarrdnumber.mount('#card_number');
+      var cardExpiry = elements.create('cardExpiry',{style: {
+        base: {
+        
+          fontWeight: 300,
+          fontFamily: 'Montserrat',
+          fontSize: '16px',
+          
+          lineHeight:"35px",
+
+          '::placeholder': {
+            color: '#87BBFD',
+            
+          },
+        },
+        invalid: {
+          iconColor: '#FFC7EE',
+          color: '#FFC7EE',
+        },
+      },
+    });
+      cardExpiry.mount('#card_expiry');
+      var cardCvc = elements.create('cardCvc',{style: {
+        base: {
+        
+          fontWeight: 300,
+          fontFamily: 'Montserrat',
+          fontSize: '16px',
+          
+          lineHeight:"35px",
+
+          '::placeholder': {
+            color: '#87BBFD',
+            
+          },
+        },
+        invalid: {
+          iconColor: '#FFC7EE',
+          color: '#FFC7EE',
+        },
+      },
+    });
+      cardCvc.mount('#card_cvv');
+    }, 3000);
+    
+   // var cardNumberElement = elements.create('cardNumber');
+  }
+  paywithstripe()
+  { 
+   // loading(true);
+    this.stripe
+      .confirmCardPayment(this.stripeclientid, {
+        payment_method: {
+          card: this.stripecarrdnumber
+        }
+      })
+      .then(function(result) {
+        if (result.error) {
+          // Show error to your customer
+          console.log(result.error.message);
+        } else {
+          // The payment succeeded!
+          console.log(result.paymentIntent);
+        }
+      });
+    // this.stripe.createToken(this.stripecarrdnumber).then(function(result){
+    //   console.log(result)
+    // });
+  };
+  
 }

@@ -44,6 +44,16 @@ socket;
   stripepay(data):Observable<any>{
     return this.http.post("https://urlshortnerappantony.herokuapp.com/create-session",data)
   }
+  stripePaymentIntent(data):Observable<any>{
+    console.log("calling payment intent")
+    return this.http.post("http://localhost:4123/create-payment-intent",data)
+  }
+  cashfreepay(data):Observable<any>{
+    return this.http.post("https://urlshortnerappantony.herokuapp.com/cashfreepay",data)
+  }
+  confirmcashfreepayment(data,url):Observable<any>{
+    return this.http.post(url,data)
+  }
 
 }
 //http://localhost:4123
